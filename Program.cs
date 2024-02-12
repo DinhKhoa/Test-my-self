@@ -4,21 +4,25 @@
     {
         public static void Main(string[] args)
         {
-            Console.Write("Nhap a: ");
-            int a = int.Parse(Console.ReadLine());
-            Console.Write("Nhap b: ");
-            int b = int.Parse(Console.ReadLine());
-            Console.WriteLine(TinhTong(a, b));
-        }
-        /// <summary>
-        /// Tinh tong a va b
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static int TinhTong(int a, int b)
+            Console.Write("Nhap n: ");
+            int n = int.Parse(Console.ReadLine());
+            List<int> arrays = new List<int>();
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("Phan tu thu {0}: ", i);
+                arrays.Add(int.Parse(Console.ReadLine()));
+            }
+            Console.WriteLine(TongCacSoTrongMang(arrays));
+        } 
+
+        public static int TongCacSoTrongMang(List<int> arrays)
         {
-            return (a + b);
+            int t = 0;
+            for (int i = 0; i < arrays.Count; i++)
+            {
+                t += arrays[i];
+            }
+            return t;
         }
     }
 }
