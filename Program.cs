@@ -1,4 +1,6 @@
-﻿namespace Test
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Test
 {
     public class Program
     {
@@ -12,17 +14,24 @@
                 Console.Write("Phan tu thu {0}: ", i);
                 arrays.Add(int.Parse(Console.ReadLine()));
             }
-            Console.WriteLine(TongCacSoTrongMang(arrays));
-        } 
-
-        public static int TongCacSoTrongMang(List<int> arrays)
+            Console.WriteLine(TongSoNguyenTo(arrays));
+        }
+        public static int TongSoNguyenTo(List<int> arrays)
         {
-            int t = 0;
+            int sum = 0;
             for (int i = 0; i < arrays.Count; i++)
             {
-                t += arrays[i];
+                if (KiemTraNghiemDu(arrays[i]) && arrays[i] > 1) sum += arrays[i];
             }
-            return t;
+            return sum;
+        }
+        private static bool KiemTraNghiemDu(int n)
+        {
+            for (int i = 2; i <= n / 2; i++)
+            {
+                if (n % 2 == 0) return false;
+            }
+            return true;
         }
     }
 }
