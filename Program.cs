@@ -14,27 +14,22 @@ namespace Test
                 Console.Write("Phan tu thu {0}: ", i);
                 arrays.Add(int.Parse(Console.ReadLine()));
             }
-            Console.WriteLine(TongCacSoHoanHao(arrays));
+            Console.WriteLine(TinhTrungBinhCacSoLeViTriChan(arrays));
         }
-        
-        public static int TongCacSoHoanHao(List<int> arrays)
+
+        public static double TinhTrungBinhCacSoLeViTriChan(List<int> arrays)
         {
             int sum = 0;
+            int count = 0;
             for (int i = 0; i < arrays.Count; i++)
             {
-                if (KiemTraSoHoanHao(arrays[i])) sum += arrays[i];
+                if (arrays[i] % 2 != 0 && i % 2 == 0)
+                {
+                    sum += arrays[i];
+                    count += 1;
+                }
             }
-            return sum;
-        }
-        private static bool KiemTraSoHoanHao(int n)
-        {
-            int tongUoc = 0; 
-            for (int i = 1; i < n; i++)
-            {
-                if (n % i == 0) tongUoc += i;
-            }
-            if (tongUoc == n) return true;
-            return false;
+            return ((double)sum / count);
         }
     }
 }
